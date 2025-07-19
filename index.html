@@ -1,0 +1,217 @@
+﻿<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>JANA GOLD - منيو الحلاوة</title>
+  <style>
+    body {
+      font-family: 'Cairo', sans-serif;
+      margin: 0;
+      background-color:#D8D758;
+    }
+
+    header {
+      background-color: rgba(0, 0, 0, 0.7);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 30px;
+      font-size: 24px;
+      font-weight: bold;
+      border-bottom: 3px solid gold;
+      color:white;
+    }
+
+    header img {
+      height: 60px;
+    }
+
+    .toggle-btn {
+      background-color: gold;
+      color: black;
+      border: none;
+      padding: 10px 15px;
+      font-size: 18px;
+      cursor: pointer;
+      border-radius: 8px;
+      margin-left: 10px;
+    }
+
+    .container {
+      display: flex;
+    }
+
+    .sidebar {
+      width: 220px;
+      background-color: rgba(0, 0, 0, 0.8);
+      padding: 15px;
+      min-height: 100vh;
+      transition: transform 0.3s ease;
+    }
+
+    .sidebar.hidden {
+      transform: translateX(100%);
+      position: absolute;
+      right: 0;
+      top: 80px;
+      z-index: 999;
+    }
+
+    .sidebar button {
+      display: block;
+      width: 100%;
+      margin: 10px 0;
+      padding: 10px;
+      background-color: gold;
+      color: black;
+      font-weight: bold;
+      border: none;
+      cursor: pointer;
+      border-radius: 8px;
+    }
+
+    .content {
+      flex-grow: 1;
+      padding: 30px;
+      background-color: rgba(255, 255, 255, 0.1);
+      min-height: 100vh;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+      background-color: rgba(0, 0, 0, 0.7);
+    }
+
+    th,
+    td {
+      border: 1px solid gold;
+      padding: 12px;
+      text-align: center;
+      color: white;
+    }
+
+    th {
+      background-color: gold;
+      color: black;
+    }
+
+    .brand-text {
+      color: gold;
+    }
+  </style>
+</head>
+<body>
+
+  <audio id="clickSound" src="C:\Users\Server\Desktop\New folder/-n44Fhw7Kgo.mp3"></audio>
+
+
+  <header>
+    <div>
+      <button class="toggle-btn" onclick="playSound(); toggleSidebar()">☰ القائمة</button>
+      JANA GOLD <span class="brand-text">"الحلاوة حلاوتنا"</span>
+    </div>
+    <img src="file:///C:\Users\Server\Desktop\New folder/2130.png" alt="JANA GOLD Logo" />
+  </header>
+
+  <div class="container">
+    <div class="sidebar hidden" id="sidebar">
+      <button onclick="playSound(); showMenu('madwar')">مدور</button>
+      <button onclick="playSound(); showMenu('sikkina')">السكينة</button>
+      <button onclick="playSound(); showMenu('furn')">الفرن</button>
+      <button onclick="playSound(); showMenu('qeshta')">القشطة</button>
+      <button onclick="playSound(); showMenu('malban')">الملبن</button>
+      <button onclick="playSound(); showMenu('sandawetsh')">سندوتش & لديدة</button>
+      <button onclick="playSound(); showMenu('borma')">يورمة & فخفخينا</button>
+      <button onclick="playSound(); showMenu('mraba')">مربى</button>
+      <button onclick="playSound(); showMenu('noga')">النوجا</button>
+      <button onclick="playSound(); showMenu('moabaa')">المعبأ</button>
+    </div>
+
+    <div class="content" id="menuContent">
+      <h2>اختر تصنيف من القائمة لعرض المنتجات</h2>
+    </div>
+  </div>
+
+  <script>
+    const sidebar = document.getElementById("sidebar");
+    const clickSound = document.getElementById("clickSound");
+
+    function toggleSidebar() {
+      sidebar.classList.toggle("hidden");
+    }
+
+    function playSound() {
+      clickSound.currentTime = 0;
+      clickSound.play();
+    }
+
+    const menus = {
+      madwar: [
+        { name: 'قرص حمص ميني', unit: 'كيلو', weight: '10 كجم', price: '0 جنيه' },
+        { name: 'قرص حمص كبير', unit: 'كيلو', weight: '10 كجم', price: '0 جنيه' },
+        { name: 'قرص فول ميني', unit: 'كيلو', weight: '10 كجم', price: '0 جنيه' },
+        { name: 'قرص فول كبير', unit: 'كيلو', weight: '10 كجم', price: '0 جنيه' },
+        { name: 'قرص سمسم ميني', unit: 'كيلو', weight: '10 كجم', price: '0 جنيه' },
+        { name: 'قرص سمسم كبير', unit: 'كيلو', weight: '10 كجم', price: '0 جنيه' },
+        { name: 'قرص علف مدور مخصوص', unit: 'كيلو', weight: '10 كجم', price: '0 جنيه' },
+        { name: 'قرص مخصوص مكسرات ميني', unit: 'كيلو', weight: '10 كجم', price: '0 جنيه' },
+        { name: 'قرص مخصوص مكسرات كبير', unit: 'كيلو', weight: '10 كجم', price: '0 جنيه' },
+        { name: 'قرص فسدقق 50 جم', unit: 'كيلو', weight: '10 كجم', price: '0 جنيه' },
+        { name: 'قرص لوز 50 جم ', unit: 'كيلو', weight: '10 كجم', price: '0 جنيه' },
+        { name: 'قرص بندق 50 جم', unit: 'كيلو', weight: '10 كجم', price: '0 جنيه' },
+        { name: 'قرص كاجو 50 جم ', unit: 'كيلو', weight: '10 كجم', price: '0 جنيه' }
+      ],
+      sikkina: [
+        { name: 'سكينة فول', unit: 'قطعة', weight: '120 جم', price: '10 جنيه' },
+        { name: 'سكينة حمص', unit: 'قطعة', weight: '120 جم', price: '11 جنيه' }
+      ],
+      furn: [
+        { name: 'بسيمة سادة', unit: 'قطعة', weight: '100 جم', price: '9 جنيه' },
+        { name: 'شكلمة بجوز الهند', unit: 'قطعة', weight: '90 جم', price: '10 جنيه' }
+      ],
+      qeshta: [
+        { name: 'قشطة عادية', unit: 'علبة', weight: '250 جم', price: '12 جنيه' },
+        { name: 'قشطة مكسرات', unit: 'علبة', weight: '250 جم', price: '15 جنيه' }
+      ],
+      malban: [
+        { name: 'ملبن ساده', unit: 'قطعة', weight: '130 جم', price: '8 جنيه' },
+        { name: 'ملبن بالمكسرات', unit: 'قطعة', weight: '150 جم', price: '14 جنيه' }
+      ],
+      sandawetsh: [
+        { name: 'سندوتش لديدة', unit: 'علبة', weight: '5 قطع', price: '20 جنيه' }
+      ],
+      borma: [
+        { name: 'يورمة فستق', unit: 'قطعة', weight: '100 جم', price: '18 جنيه' }
+      ],
+      mraba: [
+        { name: 'مربى مشمش', unit: 'برطمان', weight: '350 جم', price: '16 جنيه' }
+      ],
+      noga: [
+        { name: 'نوجا مكسرات', unit: 'قطعة', weight: '100 جم', price: '10 جنيه' }
+      ],
+      moabaa: [
+        { name: 'علبة مشكّلة صغيرة', unit: 'علبة', weight: '500 جم', price: '45 جنيه' }
+      ]
+    };
+
+    function showMenu(type) {
+      const items = menus[type];
+      if (!items) {
+        document.getElementById('menuContent').innerHTML = '<p>لا توجد بيانات متاحة لهذا التصنيف.</p>';
+        return;
+      }
+
+      let html = `<h2>قائمة الأسعار</h2><table><tr><th>اسم الصننف</th><th>الوحدة</th><th>العبوة</th><th>السعر</th></tr>`;
+      items.forEach(item => {
+        html += `<tr><td>${item.name}</td><td>${item.unit}</td><td>${item.weight}</td><td>${item.price}</td></tr>`;
+      });
+      html += `</table>`;
+      document.getElementById('menuContent').innerHTML = html;
+    }
+  </script>
+
+</body>
+</html>
